@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Doctors Page</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Doctors</h1>
+    <div class="form">
+        <form action="/Doctors" method="POST">
+            From:<input type="text" name="f" id="f"><br/>
+            To:  <input type="text" name="t" id="t">
+            <input type="submit" value="Display">
+        </form>
+    </div>
+    {% if disp == 1 %}
+    {% if docs|length < 1 %}
+    <h4 style="text-align: center">There are no doctors.</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Doctor Name</th>
+            <!-- <th>Added</th>
+            <th>Actions</th> -->
+        </tr>
+        {% for doc in docs %}
+            <tr>
+                <td>{{ doc.D_name }}</td>
+                
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% else %}
+    <h4 style="text-align: center">enter limits.</h4>
+    {% endif %} 
+</div>
+{% endblock %}
